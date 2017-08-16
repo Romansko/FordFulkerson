@@ -590,7 +590,7 @@ function graph() {
             edge.flag = false;
             edge.color = 'black';
             this.residual[edge.residualEdge].flag = false;
-            this.residual[edge.residualEdge].color = 'black';
+            this.residual[edge.residualEdge].color = 'green';
             this.residual[edge.residualEdge].c = edge.c;
             this.residual[edge.residualEdge].reverseEdge.c = 0;
 
