@@ -1,4 +1,4 @@
-﻿
+
 /**************************** main **************************************/
 var radius = 20;        // vertex radius.
 var container = document.getElementById("contentContainer");     // container for both canvas.
@@ -899,6 +899,9 @@ function showEdgeMenu(x, y) {
     if (playing === true)
         disableCriticalButtons();
     else enableCriticalButtons();
+    if (e.u === source || e.u === sink || e.v === source || e.v === sink)
+        document.getElementById("eButton1").disabled = true;
+    else document.getElementById("eButton1").disabled = false;
     edgeMenu.style.display = 'block';
     edgeMenu.style.position = 'absolute';
     edgeMenu.style.left = x + 'px';
