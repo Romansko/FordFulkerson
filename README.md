@@ -1,6 +1,8 @@
 # FordFulkerson
 Ford Fulkerson interactive demo.
 
+Just download the html and js file to the same place and run the html file.
+
 Instructions:
 
 To create a Vertex, click anywhere whithin the left canvas.
