@@ -1,5 +1,9 @@
 # FordFulkerson
-Ford Fulkerson interactive demo.
+Ford Fulkerson algorithm demo with javascript.
+There are various ways to find the augmenting path, this demo can use two different algorithms:
+1. Edmonds-Karp algorithm to find augmenting path using BFS.
+2. Capacity Scaling algorithm.
+
 
 Just download the html and js file to the same place and run the html file.
 
