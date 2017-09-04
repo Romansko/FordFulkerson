@@ -191,7 +191,7 @@ function ResidualEdge(u, v, c) {
     this.u = u;         // from Vertex id
     this.v = v;         // to Vertex id
     this.c = c;         // capacity
-    this.color = "green";
+    this.color = "darkgreen";
     this.reverseEdge = null;
     this.flag = false;
 
@@ -289,7 +289,7 @@ function ResidualEdge(u, v, c) {
             // text
             context2.save();
             context2.textBaseline = 'bottom';
-            context2.fillStyle = 'green';
+            context2.fillStyle = 'darkgreen';
             context2.textAlign = 'center';
             if (this.flag === false)
                 context2.fillText(this.c, len / 2, offset + 20);
@@ -590,7 +590,7 @@ function graph() {
             edge.flag = false;
             edge.color = 'black';
             this.residual[edge.residualEdge].flag = false;
-            this.residual[edge.residualEdge].color = 'green';
+            this.residual[edge.residualEdge].color = 'darkgreen';
             this.residual[edge.residualEdge].c = edge.c;
             this.residual[edge.residualEdge].reverseEdge.c = 0;
 
@@ -1198,8 +1198,10 @@ function augmentFlow() {
     // redraw color black 
     for (i = 0; i < p.length - 1; i++) {
         edge = mygraph.getEdge(p[i], p[i + 1]);
-        if (edge !== -1)
+        if (edge !== -1) {
             mygraph.edges[edge].color = "black";
+            mygraph.residual[mygraph.edges[edge].residualEdge].color = "darkgreen";
+        }
     }
     mygraph.clearCanvas();
     mygraph.draw();
@@ -1235,6 +1237,7 @@ function augmentFlow() {
     }
 }   // augmentFlow
 
+
 /* make the augmenting path blink and add the flow */
 function step() {
     var rIndex, edge, i;
@@ -1256,22 +1259,34 @@ function step() {
     var count = 0;
     document.getElementById("aug").value = Cf;  
     interval = setInterval(function () {            // every speed*10 miliseconds, the function will excecute.
-        if (flag === true){
-            mygraph.edges[i].color = "black";
-            mygraph.residual[mygraph.edges[i].residualEdge].color = "green";
-            flag = false;
-        }
-        else {
+        if (count > 10) {            // blink residual edge
             mygraph.edges[i].color = "red";
-            mygraph.residual[mygraph.edges[i].residualEdge].color = "red";
-            flag = true;
+            if (flag === true) {
+                mygraph.residual[mygraph.edges[i].residualEdge].color = "darkgreen";
+                flag = false;
+            }
+            else {
+                mygraph.residual[mygraph.edges[i].residualEdge].color = "red";
+                flag = true;
+            }
+            mygraph.residual[mygraph.edges[i].residualEdge].flag = true;
+        } else {
+            if (flag === true) {                    // blink graph edge
+                mygraph.edges[i].color = "black";
+                flag = false;
+            }
+            else {
+                mygraph.edges[i].color = "red";
+                flag = true;
+            }
         }
+
         mygraph.edges[i].flag = true;
-        mygraph.residual[mygraph.edges[i].residualEdge].flag = true;
+
         mygraph.clearCanvas();
         mygraph.draw();
         count++;
-        if (count > 5) {
+        if (count > 20) {
             count = 0;
             mygraph.edges[i].flag = false;
             mygraph.residual[mygraph.edges[i].residualEdge].flag = false;
