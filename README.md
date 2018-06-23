@@ -5,7 +5,7 @@ There are various ways to find the augmenting path, this demo can use two differ
 2. Capacity Scaling algorithm.
 
 
-Just download the html and js file to the same place and run the html file.
+[>>>> Click here to start <<<<] (http://htmlpreview.github.io/?https://github.com/Romansko/fordfulkerson/blob/master/main.html)
 
 Instructions:
 
