@@ -5,7 +5,7 @@ There are various ways to find the augmenting path, this demo can use two differ
 2. Capacity Scaling algorithm.
 
 
-[>>>> Click here to start <<<<](https://romansko.github.io/FordFulkerson/)
+[https://romansko.github.io/FordFulkerson](https://romansko.github.io/FordFulkerson)
 
 Instructions:
 
